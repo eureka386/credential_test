@@ -1,0 +1,19 @@
+name: TruffleHog Secret Scan
+
+on:
+  pull_request:
+    branches:
+      - main  # PR이 생성될 때 실행
+  # push:
+  #   branches:
+  #     - main  # 푸시될 때 실행 
+
+jobs:
+  trufflehog-scan:
+    runs-on: [self-hosted, Linux, ARM64]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run TruffleHog
+      run: trufflehog git https://github.com/${{ github.repository }}
