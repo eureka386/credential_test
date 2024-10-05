@@ -16,4 +16,4 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Run TruffleHog
-      run: trufflehog git https://github.com/${{ github.repository }}
+      run: /usr/local/go/bin/trufflehog git https://github.com/${{ github.repository }}
